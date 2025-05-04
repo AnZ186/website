@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Lucu 🎀</title><link rel="stylesheet" href="/static/css/main.css">
+    <!-- Font lucu dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Style kustom -->
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #fff5f7;
+        }
+        .bounce { animation: bounce 2s infinite; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-pink-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-pink-400 to-purple-500 py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white animate-pulse">
+                Selamat Datang di Dunia Lucu! ✨
+            </h1>
+            <p class="mt-2 text-xl text-white">Tempat di mana semuanya imut dan menyenangkan~</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row items-center gap-8 mb-16">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-pink-600 mb-4">Ayo Bergabung dengan Kami!</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Kami punya banyak hal seru yang bisa bikin harimu lebih berwarna! 
+                    Dari stiker lucu sampai tutorial koding yang asik 😊
+                </p>
+                <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition transform hover:scale-105">
+                    Daftar Sekarang 🚀
+                </button>
+            </div>
+            <div class="md:w-1/2 bounce">
+                <img src="https://placekitten.com/500/300" alt="Kitten" class="rounded-2xl shadow-xl border-4 border-pink-300">
+            </div>
+        </section>
+
+        <!-- Fitur -->
+        <section class="py-8">
+            <h2 class="text-2xl font-bold text-center text-purple-600 mb-12">Kenapa Pilih Kami? 🌈</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Fitur 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-pink-400">
+                    <div class="text-4xl mb-4">😻</div>
+                    <h3 class="font-bold text-xl mb-2">Super Lucu</h3>
+                    <p class="text-gray-600">Desain kami bikin kamu senyum-senyum sendiri!</p>
+                </div>
+                <!-- Fitur 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-purple-400">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="font-bold text-xl mb-2">Cepat Banget</h3>
+                    <p class="text-gray-600">Gak pake loading lama-lama, langsung jadi!</p>
+                </div>
+                <!-- Fitur 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-yellow-400">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="font-bold text-xl mb-2">Hadiah Setiap Hari</h3>
+                    <p class="text-gray-600">Dapatkan bonus lucu buat koleksimu!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-pink-200 py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-pink-800">Dibuat dengan ❤️ dan 🤪 oleh kamu!</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-pink-600 hover:text-pink-800">Twitter</a>
+                <a href="#" class="text-pink-600 hover:text-pink-800">Instagram</a>
+                <a href="#" class="text-pink-600 hover:text-pink-800">TikTok</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

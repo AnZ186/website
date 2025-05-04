@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bishal - Portfolio{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-blue-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <nav class="border border-blue-800 rounded-lg mb-8 bg-opacity-20 bg-blue-900">
+            <ul class="flex">
+                <li class="border-r border-blue-800"><a href="/" class="block px-6 py-3 hover:bg-blue-800 transition-colors {% if request.path == '/' %}bg-blue-800{% endif %} rounded-tl-lg rounded-bl-lg">_bishal</a></li>
+                <li class="border-r border-blue-800"><a href="/" class="block px-6 py-3 hover:bg-blue-800 transition-colors {% if request.path == '/' and not (request.path == '/about' or request.path == '/projects' or request.path == '/contact') %}bg-blue-800{% endif %}">_hello</a></li>
+                <li class="border-r border-blue-800"><a href="/about" class="block px-6 py-3 hover:bg-blue-800 transition-colors {% if request.path == '/about' %}bg-blue-800{% endif %}">_about-me</a></li>
+                <li class="border-r border-blue-800"><a href="/projects" class="block px-6 py-3 hover:bg-blue-800 transition-colors {% if request.path == '/projects' %}bg-blue-800{% endif %}">_projects</a></li>
+                <li class="ml-auto"><a href="/contact" class="block px-6 py-3 hover:bg-blue-800 transition-colors {% if request.path == '/contact' %}bg-blue-800{% endif %} rounded-tr-lg rounded-br-lg">_contact-me</a></li>
+            </ul>
+        </nav>
+
+        <main class="py-8">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="mt-16 border border-blue-800 rounded-lg bg-opacity-20 bg-blue-900 p-4">
+            <div class="flex items-center">
+                <span class="mr-4">Find me:</span>
+                <a href="#" class="mx-2 hover:text-blue-400 transition-colors"><i class="fab fa-github"></i></a>
+                <a href="#" class="mx-2 hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                <div class="ml-auto">
+                    <a href="https://github.com/codecomet" class="flex items-center hover:text-blue-400 transition-colors">
+                        <i class="fab fa-github mr-2"></i>
+                        <span>@codeComet</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

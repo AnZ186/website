@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .birthday-card {
+      @apply bg-gradient-to-br from-pink-100 to-purple-100 shadow-2xl rounded-3xl overflow-hidden transform transition-all hover:scale-105;
+    }
+    .btn-primary {
+      @apply bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105;
+    }
+  }
+  
+  @keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    animation: confetti-fall linear forwards;
+  }
+
+  @layer utilities {
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-twinkle {
+      animation: twinkle 2s ease-in-out infinite alternate;
+    }
+    
+    .animate-spin-slow {
+      animation: spin 10s linear infinite;
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .text-shadow-md {
+      text-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    }
+    
+    .text-shadow-lg {
+      text-shadow: 0 15px 30px rgba(0,0,0,0.11);
+    }
+    
+    .text-shadow-none {
+      text-shadow: none;
+    }
+  }

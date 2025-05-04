@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun!</title>
+<link href="/static/css/main.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+    .balloon {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: float 6s ease-in-out infinite;
+    }
+
+    /* Animasi tambahan */
+    @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+    }
+    
+    .heart, .star {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    }
+    
+    .bg-pulse {
+    animation: pulse 8s infinite alternate;
+    }
+    
+    @keyframes pulse {
+    0% { background-color: #ffcce6; }
+    25% { background-color: #e6f2ff; }
+    50% { background-color: #e6ffe6; }
+    75% { background-color: #fff2e6; }
+    100% { background-color: #ffcce6; }
+    }
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-pulse bg-gradient-to-b from-blue-50 to-purple-50 flex items-center justify-center p-4 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="hearts"></div>
+        <div class="stars"></div>
+    </div>
+
+    <div class="birthday-card max-w-2xl w-full p-8 md:p-12 relative overflow-hidden z-10 animate__animated animate__zoomIn">
+    <!-- Konten Utama -->
+    <div class="relative z-10 text-center">
+        <h1 class="sparkle-text text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 mb-6">
+        Selamat Ulang Tahun!
+        </h1>
+    
+        <div class="text-4xl md:text-5xl font-bold text-purple-800 mb-8 animate__animated animate__rubberBand animate__infinite">
+            {{ name }} <span class="cake inline-block">🎂</span>
+        </div>
+    
+        <p class="text-xl md:text-2xl text-gray-700 mb-10 animate__animated animate__fadeInUp animate__delay-1s">
+            Semoga hari spesialmu penuh dengan kebahagiaan, tawa, dan banyak kue! 🎉
+        </p>
+    
+        <div class="mb-10 animate__animated animate__tada animate__infinite animate__slower">
+            <div class="text-9xl gift">🎁</div>
+        </div>
+    
+    <form method="POST" class="mt-8">
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Masukkan nama" 
+            class="px-6 py-3 rounded-full border-2 border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        >
+        <button type="submit" class="btn-primary">
+            Ucapkan!
+        </button>
+        </div>
+    </form>
+    </div>
+    
+    <!-- Efek Konfeti -->
+    <div id="confetti-canvas"></div>
+</div>
+
+<script>
+    // Trigger konfeti
+    function fireConfetti() {
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']
+    });
+    }
+    
+    // Jalankan konfeti setiap 3 detik
+    setInterval(fireConfetti, 3000);
+    
+    // Jalankan saat pertama load
+    document.addEventListener('DOMContentLoaded', function() {
+    fireConfetti();
+    
+      // Buat balon dinamis
+    for (let i = 0; i < 5; i++) {
+        createBalloon();
+    }
+    });
+    
+    function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + '%';
+      balloon.style.top = Math.random() * 100 + '%';
+      balloon.style.animationDelay = Math.random() * 5 + 's';
+    balloon.style.backgroundImage = `url('{{ url_for('static', filename='images/balloons.png') }}')`;
+    document.querySelector('.birthday-card').appendChild(balloon);
+    }
+
+        // Animasi tambahan
+        document.addEventListener('DOMContentLoaded', function() {
+      // Animasi hadiah terbuka
+    const gift = document.querySelector('.gift');
+    gift.addEventListener('click', function() {
+        this.classList.remove('animate__tada');
+        this.classList.add('animate__hinge');
+        setTimeout(() => {
+        this.textContent = '💝';
+        this.classList.remove('animate__hinge');
+        this.classList.add('animate__bounceIn');
+        }, 2000);
+    });
+
+      // Buat elemen animasi
+    createHearts();
+    createStars();
+    });
+
+    function createHearts() {
+    const container = document.querySelector('.hearts');
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.animation = `float ${Math.random() * 6 + 3}s linear infinite`;
+        heart.style.opacity = Math.random();
+        container.appendChild(heart);
+    }
+    }
+
+    function createStars() {
+    const container = document.querySelector('.stars');
+    for (let i = 0; i < 30; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.innerHTML = '✨';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.fontSize = (Math.random() * 15 + 5) + 'px';
+        star.style.animation = `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite alternate`;
+        star.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(star);
+    }
+    }
+</script>
+<script src="/static/js/animations.js"></script>
+<script src="/static/js/fireworks.js"></script>
+</body>
+</html>

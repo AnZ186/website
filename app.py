@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 # Create a Flask app
 app = Flask(__name__)
@@ -6,11 +6,7 @@ app = Flask(__name__)
 # Define a route
 @app.route('/')
 def home():
-    post = [
-        {"id": 1, "title": "Postingan Pertama", "Konten": "Ini Adalah Postingan Pertama Saya."},
-        {"id": 2, "title": "Postingan Kedua", "Konten": "Ini Adalah Postingan Kedua Saya."}
-    ]
-    return render_template('index.html', title="Welcome To My Website", post=post)
+    return render_template('index.html')
 
 # About Route
 @app.route('/about')
@@ -39,6 +35,32 @@ def happybirthday():
     if request.method == 'POST':
         name = request.form.get('name', 'Teman')
     return render_template('hbd.html', name=name)
+
+# Kalkulator Route
+@app.route("/kalkulator")
+def redirect_to_kalkulator():
+    return render_template('kalkulator.html')
+
+# Kalkulator API Route
+@app.route("/calculate", methods=["POST"])
+def calculate():
+    data = request.get_json()
+    rumus = data["rumus"]
+    nilai = data["nilai"]
+    
+    try:
+        if rumus == "lingkaran":
+            hasil = 3.14 * (float(nilai["radius"]) ** 2)
+        elif rumus == "segitiga":
+            hasil = 0.5 * float(nilai["alas"]) * float(nilai["tinggi"])
+        elif rumus == "persegi":
+            hasil = float(nilai["sisi"]) ** 2
+        else:
+            hasil = "Rumus tidak valid"
+        
+        return jsonify({"hasil": hasil})
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 # Test Route
 @app.route('/test')

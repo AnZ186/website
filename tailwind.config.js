@@ -20,6 +20,9 @@ module.exports = {
       colors: {
         'darkpink': '#E9456C',
         'darkblue': '#052842',
+        dark: "#0f172a",
+        primary: "#3b82f6",
+        secondary: "#8b5cf6",
       },
       fontFamily: {
         Winky: ['Winky Sans', ]

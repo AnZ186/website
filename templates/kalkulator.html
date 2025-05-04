@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Rumus Modern</title>
+<link rel="stylesheet" href="static/css/main.css">
+</head>
+<body class="bg-gradient-to-br from-dark via-primary to-secondary min-h-screen text-white">
+<div class="container mx-auto px-4 py-12">
+    <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-2">✨ Kalkulator Rumus</h1>
+    <p class="text-lg opacity-80">Hitung berbagai rumus matematika dengan mudah</p>
+    </header>
+
+    <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 max-w-3xl mx-auto shadow-2xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Kalkulator Lingkaran -->
+        <div class="bg-dark/50 p-5 rounded-lg border border-primary/20">
+        <h3 class="text-xl font-semibold mb-3">Lingkaran</h3>
+        <div class="space-y-3">
+            <input type="number" id="radius" placeholder="Radius" class="w-full bg-dark/70 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary">
+            <button onclick="hitung('lingkaran')" class="w-full bg-primary hover:bg-primary/80 py-2 rounded transition">Hitung Luas</button>
+            <div id="hasil-lingkaran" class="text-center text-lg font-medium"></div>
+        </div>
+        </div>
+
+        <!-- Kalkulator Segitiga -->
+        <div class="bg-dark/50 p-5 rounded-lg border border-secondary/20">
+        <h3 class="text-xl font-semibold mb-3">Segitiga</h3>
+        <div class="space-y-3">
+            <input type="number" id="alas" placeholder="Alas" class="w-full bg-dark/70 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary">
+            <input type="number" id="tinggi" placeholder="Tinggi" class="w-full bg-dark/70 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary">
+            <button onclick="hitung('segitiga')" class="w-full bg-secondary hover:bg-secondary/80 py-2 rounded transition">Hitung Luas</button>
+            <div id="hasil-segitiga" class="text-center text-lg font-medium"></div>
+        </div>
+        </div>
+
+        <!-- Kalkulator Persegi -->
+        <div class="bg-dark/50 p-5 rounded-lg border border-purple-500/20">
+        <h3 class="text-xl font-semibold mb-3">Persegi</h3>
+        <div class="space-y-3">
+            <input type="number" id="sisi" placeholder="Sisi" class="w-full bg-dark/70 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <button onclick="hitung('persegi')" class="w-full bg-purple-500 hover:bg-purple-400 py-2 rounded transition">Hitung Luas</button>
+            <div id="hasil-persegi" class="text-center text-lg font-medium"></div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script src="/static/js/kalkulator.js"></script>
+</body>
+</html>
